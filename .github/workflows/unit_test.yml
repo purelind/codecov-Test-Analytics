@@ -23,6 +23,7 @@ jobs:
           go-version: '1.22'
       - name: Test with go test
         run: |
+          make install-deps
           make test
           cat junit.xml
       - name: Upload coverage to Codecov
