@@ -4,7 +4,7 @@ GOPATH := $(shell go env GOPATH)
 PATH := $(GOPATH)/bin:$(PATH)
 
 test: install-deps
-	$(GOPATH)/bin/go-junit-report > junit.xml < <(go test -v -coverprofile=coverage.out ./... -count=10)
+	go test -v -coverprofile=coverage.out ./... -count=10 | go-junit-report > junit.xml
 
 coverage:
 	go tool cover -html=coverage.out -o coverage.html
